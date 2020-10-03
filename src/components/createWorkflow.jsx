@@ -13,7 +13,6 @@ class CreateWorkflow extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.editingNode);
     this.setState(this.props.editingNode);
   }
 

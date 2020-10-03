@@ -16,13 +16,15 @@ class App extends Component {
             title: 'Task 1',
             description: 'Task1 Description goes here',
             completed: true,
-            sortOrder: 1
+            sortOrder: 1,
+            id: 1
           },
           {
             title: 'Task 2',
             description: 'Task2 Description goes here',
             completed: true,
-            sortOrder: 2
+            sortOrder: 2,
+            id: 2
           }
         ]
       },
@@ -36,13 +38,15 @@ class App extends Component {
             title: 'Task 21',
             description: 'Task21 Description goes here',
             completed: false,
-            sortOrder: 1
+            sortOrder: 1,
+            id: 1
           },
           {
             title: 'Task 22',
             description: 'Task22 Description goes here',
             completed: false,
-            sortOrder: 2
+            sortOrder: 2,
+            id: 2
           }
         ]
       }
@@ -101,6 +105,19 @@ class App extends Component {
     this.setState({ workflows });
   }
 
+  searchFilter = (status) => {
+    var workflows = this.state.workflows;
+    workflows.map((workflow) => {
+      workflow.displayState = true;
+      if (status != 'mixed') {
+        if (workflow.completed != status) {
+          workflow.displayState = false;
+        }
+      }
+    });
+    this.setState({ workflows });
+  }
+
 
   render() {
     return (
@@ -110,7 +127,7 @@ class App extends Component {
           this.state.editingWorkflow ?
             <CreateWorkflow onSave={this.handleSave} workflows={this.state.workflows} onClick={this.manageCreateWindow} editingNode={this.state.editingNode} />
             :
-            <WorkflowList workflows={this.state.workflows} search={this.search} editWorkflow={this.editWorkflow} onClick={this.manageCreateWindow} />
+            <WorkflowList workflows={this.state.workflows} search={this.search} searchFilter={this.searchFilter} editWorkflow={this.editWorkflow} onClick={this.manageCreateWindow} />
         }
       </React.Fragment >
     );

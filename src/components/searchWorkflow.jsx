@@ -13,6 +13,11 @@ class SearchWorkflow extends Component {
           </div>
           <div className="inline-block-element filter-element">
             <button type="button"><i className="fas fa-filter"></i> Filter</button>
+            <ul className="filter-option-list">
+              <li><div className="filter-option" onClick={this.props.searchFilter.bind(this, 'mixed')}>ALL</div></li>
+              <li><div className="filter-option" onClick={this.props.searchFilter.bind(this, true)}>COMPLETED</div></li>
+              <li><div className="filter-option" onClick={this.props.searchFilter.bind(this, false)}>PENDING</div></li>
+            </ul>
           </div>
         </div>
         <div className="fr move-down">

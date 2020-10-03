@@ -14,7 +14,12 @@ button.danger-btn {background: #fd052b; color: #fff; border: 1px #fd052b solid;}
 button.blue-btn {background: #3b5cd9; color: #fff; border: 1px #3b5cd9 solid;}
 button.purple-btn {background: #7900b7; color: #fff; border: 1px #7900b7 solid;}
 .move-down {margin-top: 26px;}
-.filter-element {margin-left: 20px;}
+.filter-element {margin-left: 20px; position: relative;}
+.filter-option-list {position: absolute; top: 100%; left: 0%; z-index: 99; list-style: none; padding: 0px; margin: 0px; background: #f2f2f2; width: 120px; padding: 0px; font-size: 14px; border: 1px #ddd solid; display: none;}
+.filter-option-list li {padding: 10px; border-bottom: 1px #ddd solid;}
+.filter-option-list li:last-child {border: none;}
+.filter-option-list li:hover {background: #7900b7; color: #fff;}
+.filter-element:hover .filter-option-list {display: block;}
 .fl {float: left;}
 .fr {float: right;}
 .cl {clear: both;}

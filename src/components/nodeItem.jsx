@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 class NodeItem extends Component {
 
+  // componentDidMount() {
+  //   if (!status) {
+  //     status = 3;
+  //   }
+  // }
+
   render() {
-    const { title, description, status, id } = this.props.node;
+    const { title, description, id } = this.props.node;
+    let status = 3;
+    if (this.props.node.status) {
+      status = this.props.node.status;
+    }
     return (
       <div className="node-element">
         <div className="node-element-inner">

@@ -9,7 +9,7 @@ class WorkflowList extends Component {
     const { workflows } = this.props;
     return (
       <React.Fragment>
-        <SearchWorkflow workflows={this.props.workflows} search={this.props.search} onClick={this.props.onClick} />
+        <SearchWorkflow workflows={this.props.workflows} search={this.props.search} searchFilter={this.props.searchFilter} onClick={this.props.onClick} />
         <div className="inner-container">
           {workflows.map((workflow) => (
             <WorkflowItem key={workflow.id} workflow={workflow} onClick={this.props.editWorkflow} />
