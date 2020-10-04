@@ -57,7 +57,7 @@ class App extends Component {
 
   constructor() {
     super();
-    console.log("App Constructor");
+    //console.log("App Constructor");
   }
 
   handleSave = (workflow) => {
@@ -70,13 +70,19 @@ class App extends Component {
         }
       });
     } else {
+      if (!workflow.id) {
+        workflow.id = workshops.length + 1;
+      }
       workshops.push(workflow);
     }
 
     this.setState(workshops);
-    // this.setState({ editingWorkflow: false });
-    // this.setState({ editingNode: null });
+    this.setState({ editingWorkflow: false });
+    this.setState({ editingNode: null });
     this.manageCreateWindow();
+
+    // console.log('after - save ');
+    // console.log(this.state);
   }
 
   manageCreateWindow = () => {
@@ -118,6 +124,9 @@ class App extends Component {
     this.setState({ workflows });
   }
 
+  deleteWorkflow = (did) => {
+    this.setState({ workflows: [...this.state.workflows.filter(wrkfl => wrkfl.id != did)] });
+  }
 
   render() {
     return (
@@ -127,7 +136,7 @@ class App extends Component {
           this.state.editingWorkflow ?
             <CreateWorkflow onSave={this.handleSave} workflows={this.state.workflows} onClick={this.manageCreateWindow} editingNode={this.state.editingNode} />
             :
-            <WorkflowList workflows={this.state.workflows} search={this.search} searchFilter={this.searchFilter} editWorkflow={this.editWorkflow} onClick={this.manageCreateWindow} />
+            <WorkflowList workflows={this.state.workflows} deleteWorkflow={this.deleteWorkflow} search={this.search} searchFilter={this.searchFilter} editWorkflow={this.editWorkflow} onClick={this.manageCreateWindow} />
         }
       </React.Fragment >
     );

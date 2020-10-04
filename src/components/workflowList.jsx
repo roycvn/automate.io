@@ -7,12 +7,20 @@ class WorkflowList extends Component {
 
   render() {
     const { workflows } = this.props;
+    // let counter = 1;
+    // workflows.map((workflow) => {
+    //   if (!workflow.id) {
+    //     workflow.id = counter++
+    //   }
+    // });
     return (
       <React.Fragment>
-        <SearchWorkflow workflows={this.props.workflows} search={this.props.search} searchFilter={this.props.searchFilter} onClick={this.props.onClick} />
+        <div className="header-container">
+          <SearchWorkflow workflows={this.props.workflows} search={this.props.search} searchFilter={this.props.searchFilter} onClick={this.props.onClick} />
+        </div>
         <div className="inner-container">
           {workflows.map((workflow) => (
-            <WorkflowItem key={workflow.id} workflow={workflow} onClick={this.props.editWorkflow} />
+            <WorkflowItem key={workflow.id} workflow={workflow} deleteWorkflow={this.props.deleteWorkflow} onClick={this.props.editWorkflow} />
           ))}
         </div>
       </React.Fragment>

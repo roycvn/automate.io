@@ -23,10 +23,12 @@ class WorkflowItem extends Component {
 
     return (
       <React.Fragment>
-        <div className="workflow-item-container effects" onClick={this.props.onClick.bind(this, workflow)}>
-          <div className="workflowItem-delete effects"><i className="fas fa-trash effects"></i></div>
+        <div className="workflow-item-container effects">
+          <div className={"workflowItem-delete effects workflow-status-option-" + workflow.status.toLowerCase()} onClick={this.props.deleteWorkflow.bind(this, workflow.id)}><i className="fas fa-trash effects"></i></div>
+
           <div className="worflow-item">
-            <div className="workflow-title">{workflow.title}</div>
+            <div className="workflow-title">{workflow.title} </div>
+            <div className="quickLink" onClick={this.props.onClick.bind(this, workflow)}><i className="far fa-edit"></i> Edit Workflow</div>
             <div className="workflow-status">
               {workflow.status}
               <div className="workflow-status-icon">
