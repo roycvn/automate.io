@@ -20,7 +20,7 @@ class WorkflowList extends Component {
         </div>
         <div className="inner-container">
           {workflows.map((workflow) => (
-            <WorkflowItem key={workflow.id} workflow={workflow} deleteWorkflow={this.props.deleteWorkflow} onClick={this.props.editWorkflow} />
+            <WorkflowItem key={workflow.id} workflow={workflow} workflowStatus={this.props.workflowStatus} deleteWorkflow={this.props.deleteWorkflow} onClick={this.props.editWorkflow} />
           ))}
         </div>
       </React.Fragment>

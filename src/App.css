@@ -56,4 +56,16 @@ button.purple-btn {background: #7900b7; color: #fff; border: 1px #7900b7 solid;}
 
 .display-none {display: none;}
 .quickLink {font-size: 12px; cursor: pointer; text-decoration: none; color: #a900b0;}
-.workflow-status-option-pending {display: none;}
+.workflow-status-option-pending, .hide-visibility {display: none;}
+
+.login-screen {width: 400px; border: 1px #ddd solid; border-radius: 10px; margin: 60px auto; padding: 20px; box-shadow: 0px 0px 10px 1px #ccc;}
+.login-screen h2 {margin: 10px 0px; text-align: center; font-size: 12; font-weight: 600;}
+.login-screen .txt {width: 100%; margin: 10px 0px; padding: 10px;}
+.login-screen button[type="submit"] {background-color: #3b5cd9; color: #fff; width: 100%; margin-top: 20px; border-radius: 5px; 
+  border: 1px #3b5cd9 solid;}
+
+.outer-txt-field {border: 1px #ddd solid; padding: 5px 10px; border-radius: 16px; margin: 20px 0px;}
+.outer-txt-field .outer-txt {margin-left: 10px; padding: 5px 0px; width: 90%; border: none; outline: none;}
+.outer-txt-field.no-margin {margin: 0px; margin-top: 10px; padding: 2px 10px;}
+.no-margin .outer-txt {padding: 5px 10px; }
+.outer-txt-field.no-margin .outer-txt {margin-left: 0px;}

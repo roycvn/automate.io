@@ -66,11 +66,38 @@ class CreateWorkflow extends Component {
       realStatus = 3;
     }
 
+    let proceed = true;
+    let prevId = 1;
+    if (id > 1) {
+      prevId = id - 1;
+    }
+
     let nodes = this.state.nodes;
     nodes.map((node) => {
-      if (node.id == id) {
-        node.status = realStatus;
+      if (id != 1) {
+        if (node.id == prevId) {
+          if (!node.status || node.status != 1) {
+            if (realStatus == 1) {
+              proceed = false;
+            }
+          }
+        }
       }
+      if (proceed) {
+        if (node.id == id) {
+          node.status = realStatus;
+          node.completed = false;
+          if (realStatus == 1) {
+            node.completed = true;
+          }
+        } else {
+          if (node.status != 1) {
+            node.completed = false;
+          }
+        }
+      }
+
+      
     });
 
     this.setState({ nodes });

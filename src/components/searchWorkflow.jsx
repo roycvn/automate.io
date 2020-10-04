@@ -7,8 +7,9 @@ class SearchWorkflow extends Component {
         <div className="fl">
           <div className="inline-block-element">
             <label htmlFor="search-bar">Search workflows based on workflow name</label>
-            <div>
-              <input id="search-bar" type="search" className="txt search-txt" onChange={this.props.search.bind(this)} placeholder="Search Workflows" />
+            <div className="outer-txt-field no-margin">
+              <i className="fas fa-search"></i>
+              <input id="search-bar" type="search" className="outer-txt search-txt" onChange={this.props.search.bind(this)} placeholder="Search Workflows" />
             </div>
           </div>
           <div className="inline-block-element filter-element">

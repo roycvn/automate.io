@@ -31,7 +31,7 @@ class WorkflowItem extends Component {
             <div className="quickLink" onClick={this.props.onClick.bind(this, workflow)}><i className="far fa-edit"></i> Edit Workflow</div>
             <div className="workflow-status">
               {workflow.status}
-              <div className="workflow-status-icon">
+              <div className="workflow-status-icon" onClick={this.props.workflowStatus.bind(this, workflow)}>
                 <i className={'fas fa-check-circle workflow-' + workflow.status.toLowerCase()}></i>
               </div>
             </div>

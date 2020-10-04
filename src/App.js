@@ -3,6 +3,7 @@ import './App.css';
 import CreateWorkflow from './components/createWorkflow';
 import NavBar from "./components/navbar";
 import WorkflowList from "./components/workflowList";
+import Login from "./components/login";
 
 class App extends Component {
   state = {
@@ -52,7 +53,8 @@ class App extends Component {
       }
     ],
     editingWorkflow: false,
-    editingNode: null
+    editingNode: null,
+    isLoggedIn: false
   };
 
   constructor() {
@@ -94,6 +96,10 @@ class App extends Component {
     this.manageCreateWindow();
   }
 
+  workflowStatus = (workflow) => {
+    workflow.completed = !workflow.completed;
+  }
+
   search = (e) => {
     var txt = e.target.value;
     var workflows = this.state.workflows;
@@ -128,15 +134,26 @@ class App extends Component {
     this.setState({ workflows: [...this.state.workflows.filter(wrkfl => wrkfl.id != did)] });
   }
 
+
+  doLogout = () => {
+    this.setState({ isLoggedIn: false });
+  }
+
+  doLogin = () => {
+    this.setState({ isLoggedIn: true });
+  }
+
   render() {
     return (
       <React.Fragment>
-        <NavBar />
+        <NavBar isLoggedIn={this.state.isLoggedIn} doLogout={this.doLogout} />
         {
-          this.state.editingWorkflow ?
-            <CreateWorkflow onSave={this.handleSave} workflows={this.state.workflows} onClick={this.manageCreateWindow} editingNode={this.state.editingNode} />
-            :
-            <WorkflowList workflows={this.state.workflows} deleteWorkflow={this.deleteWorkflow} search={this.search} searchFilter={this.searchFilter} editWorkflow={this.editWorkflow} onClick={this.manageCreateWindow} />
+          this.state.isLoggedIn ? (
+            this.state.editingWorkflow ?
+              <CreateWorkflow onSave={this.handleSave} workflows={this.state.workflows} onClick={this.manageCreateWindow} editingNode={this.state.editingNode} />
+              :
+              <WorkflowList workflows={this.state.workflows} workflowStatus={this.workflowStatus} deleteWorkflow={this.deleteWorkflow} search={this.search} searchFilter={this.searchFilter} editWorkflow={this.editWorkflow} onClick={this.manageCreateWindow} />
+          ) : <Login isLoggedIn={this.state.isLoggedIn} doLogin={this.doLogin} />
         }
       </React.Fragment >
     );
